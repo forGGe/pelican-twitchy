@@ -190,6 +190,11 @@ ul.sidebar_submenu>li>a>i.padding-small{
     margin-top: 0px;
     margin-bottom: 30px;
 }
+
+h1{
+    display: grid; 
+}
+
 .jumbotron p:last-child{
     margin-bottom: 0px;
 }
@@ -242,6 +247,7 @@ span.glyphicon-chevron-down, .collapsed span.glyphicon-chevron-up{
 .publish-info-block{
     display: inline-block;
     margin-top: 10px;
+    padding-bottom: 10px;
 }
 
 /*dont border codesections because it might look stupid with container-fluid*/
