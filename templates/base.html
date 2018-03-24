@@ -69,6 +69,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     
+    <!-- Social Likes Next buttons CSS: https://github.com/sapegin/social-likes-next/blob/master/Readme.md --> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-likes-next/dist/social-likes_flat.css" />
+
     <!-- Feeds -->
     {% if FEED_ALL_ATOM %}
         <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate"
@@ -92,7 +95,7 @@
                 {{ nav_small_li(SITEURL + '/' + ARCHIVES_URL | default('archives.html'), 'Recent Articles', '<span class="glyphicon glyphicon-th-list"></span>') }}
                 
                 {% if SHARE %}
-                <li class="nav-divider"></li>
+                <!-- li class="nav-divider"></li>
                 <li id="share-small">
                     <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
                         <i class="fa fa-share-alt padding-small"></i>
@@ -114,7 +117,7 @@
                             <i class="fa fa-twitter-square padding-small"></i>
                         </a>
                     </li>
-                </ul></li>
+                </ul></li -->
                 {% endif %}
                 {% if SOCIAL %}
                 <li class="nav-divider"></li>
@@ -179,7 +182,7 @@
                     </li>
                 {% endif %}
                 {% if SHARE %}
-                <li class="nav-divider"></li>
+                <!-- li class="nav-divider"></li>
                 <li id="share">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
                         <i class="fa fa-share-alt padding-small"></i>
@@ -205,7 +208,7 @@
                             Twitter
                         </a>
                     </li>
-                </ul></li>
+                </ul></li -->
                 {% endif %}
                 {% if SOCIAL %}
                 <li class="nav-divider"></li>
@@ -330,6 +333,9 @@
     <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
     <!-- twitchy Script -->
     <script src="{{ SITEURL }}/theme/js/pelican_twitchy.min.js"></script>
+    <!-- Social Likes Next buttons: https://github.com/sapegin/social-likes-next/blob/master/Readme.md --> 
+    <script src="https://cdn.jsdelivr.net/npm/social-likes-next/dist/social-likes.min.js"></script>
+
     {% include 'include/cookieconsent.html' %}
     {% include 'include/ga.html' %}
     {% block scripts %}
