@@ -18,13 +18,16 @@
 {%- endmacro %}
 {% macro get_icon_attributes(name) -%}
     {%- set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') -%}
-    {%- if name_sanitized in ['flickr', 'spotify', 'stack-overflow'] -%}
-        {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ ' fa-lg' -%}
+    {%- if name_sanitized in ['flickr', 'github', 'spotify', 'stack-overflow', 'telegram'] -%}
+        {%- set iconattributes = 'fab fa-' ~ name_sanitized ~ ' fa-lg' -%}
     {%- else -%}
-        {%- set iconattributes = 'fa fa-' ~ name_sanitized ~ '-square fa-lg' -%}
+        {%- set iconattributes = 'fab fa-' ~ name_sanitized ~ '-square fa-lg' -%}
+    {%- endif -%}
+    {%- if name_sanitized == 'linkedin' -%}
+        {%- set iconattributes = 'fab fa-linkedin fa-lg' -%}
     {%- endif -%}
     {%- if name|lower == 'email' -%}
-        {%- set iconattributes = 'fa fa-envelope-square fa-lg' -%}
+        {%- set iconattributes = 'fas fa-at fa-lg' -%}
     {%- endif -%}
     {{iconattributes}}
 {%- endmacro %}
@@ -98,23 +101,23 @@
                 <!-- li class="nav-divider"></li>
                 <li id="share-small">
                     <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="Share" class="collapsed">
-                        <i class="fa fa-share-alt padding-small"></i>
+                        <i class="fab fa-share-alt padding-small"></i>
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse {% block collapse_share_small %}{% endblock %}">
                     <li>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" title="Share via Facebook" target="popup">
-                            <i class="fa fa-facebook-square padding-small"></i>
+                            <i class="fab fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
                         <a href="https://plus.google.com/share?url={{share_url}}" title="Share via Google+" target="popup">
-                            <i class="fa fa-google-plus padding-small"></i>
+                            <i class="fab fa-google-plus padding-small"></i>
                         </a>
                     </li>
                     <li>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
-                            <i class="fa fa-twitter-square padding-small"></i>
+                            <i class="fab fa-twitter-square padding-small"></i>
                         </a>
                     </li>
                 </ul></li -->
@@ -123,7 +126,7 @@
                 <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
-                        <i class="fa fa-users padding-small"></i>
+                        <i class="fab fa-users padding-small"></i>
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
@@ -135,7 +138,7 @@
                 </ul></li>
                 {% endif %}
                 <li class="nav-divider"></li>
-                {{ nav_small_li('#', 'Back to top', '<span class="fa fa-arrow-up"></span>') }}
+                {{ nav_small_li('#', 'Back to top', '<span class="fab fa-arrow-up"></span>') }}
             </ul>
         </div>
         <div id="sidebar-wrapper" class="twitchy-background">
@@ -161,14 +164,14 @@
                     {% for a in (all_articles if all_articles else articles)[:RECENT_POST_COUNT] %}
                         <li class="{% if a == article %}active{% endif %}">
                             <a class="hide-overflow" href="{{ SITEURL }}/{{ a.url }}" title="{{ a.title|striptags|trim }}">
-                                <i class="fa fa-file-text padding-small"></i>
+                                <i class="fab fa-file-text padding-small"></i>
                                 {{ a.title | striptags | trim }}
                             </a>
                         </li>
                     {% endfor %}
                     <li>
                         <a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
-                            <i class="fa fa-arrow-right padding-small"></i>
+                            <i class="fab fa-arrow-right padding-small"></i>
                             More
                         </a>
                     </li>
@@ -185,26 +188,26 @@
                 <!-- li class="nav-divider"></li>
                 <li id="share">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
-                        <i class="fa fa-share-alt padding-small"></i>
+                        <i class="fab fa-share-alt padding-small"></i>
                         Share
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse {% block collapse_share %}{% endblock %}">
                     <li>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{share_url}}" target="popup">
-                            <i class="fa fa-facebook-square padding-small"></i>
+                            <i class="fab fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
                         <a href="https://plus.google.com/share?url={{share_url}}" target="popup">
-                            <i class="fa fa-google-plus padding-small"></i>
+                            <i class="fab fa-google-plus padding-small"></i>
                             Google+
                         </a>
                     </li>
                     <li>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
-                            <i class="fa fa-twitter-square padding-small"></i>
+                            <i class="fab fa-twitter-square padding-small"></i>
                             Twitter
                         </a>
                     </li>
@@ -226,7 +229,7 @@
                 <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
-                        <i class="fa fa-folder-open padding-small"></i>
+                        <i class="fas fa-folder-open padding-small"></i>
                         Categories
                     </a>
                 </li>
@@ -234,7 +237,7 @@
                     {% for cat, articles in categories %}
                     <li {% if cat == category %}class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ cat.url }}">
-                            <i class="fa fa-folder-open padding-small"></i>
+                            <i class="fab fa-folder-open padding-small"></i>
                             {{ cat }}
                             <span class="badge pull-right categorybadge">{{ articles|count }}</span>
                         </a>
@@ -252,7 +255,7 @@
                 <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-tags">
-                        <i class="fa fa-tags padding-small"></i>
+                        <i class="fab fa-tags padding-small"></i>
                         Tags
                     </a>
                 </li>
@@ -267,31 +270,11 @@
                 </ul></li>
                 {% endif %}
 
-                {% if DISPLAY_PAGES_ON_MENU %}
-                <li class="nav-divider"></li>
-                <!-- <li>
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
-                        <i class="fa fa-folder-open padding-small"></i>
-                        Pages
-                    </a>
-                </li> -->
-                <!-- <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}"> -->
-                    {% for p in pages %}
-                    <li{% if p == page %} class="active"{% endif %}>
-                        <a href="{{ SITEURL }}/{{ p.url }}">
-                            <i class="fa fa-file-text padding-small"></i>
-                            {{ p.menulabel|default(p.title) }}
-                        </a>
-                    </li>
-                    {% endfor %}
-                <!-- </ul></li> -->
-                {% endif %}
-
                 {% if SOCIAL %}
                 <li class="nav-divider"></li>
                 <!-- <li>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
-                        <i class="fa fa-users padding-small"></i>
+                        <i class="fab fa-users padding-small"></i>
                         Contact
                     </a>
                 </li> -->
@@ -306,15 +289,35 @@
                     {% endfor %}
                 <!-- </ul></li> -->
                 {% endif %}
+
+                {% if DISPLAY_PAGES_ON_MENU %}
+                <li class="nav-divider"></li>
+                <!-- <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        <i class="fab fa-folder-open padding-small"></i>
+                        Pages
+                    </a>
+                </li> -->
+                <!-- <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse {% block collapse_pages %}{% endblock %}"> -->
+                    {% for p in pages %}
+                    <li{% if p == page %} class="active"{% endif %}>
+                        <a href="{{ SITEURL }}/{{ p.url }}">
+                            <i class="fas fa-file-alt fa-lg padding-small"></i>
+                            {{ p.menulabel|default(p.title) }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                <!-- </ul></li> -->
+                {% endif %}
             </ul>
             <ul class="sidebar-nav sidebar-feeds">
                     <li>
-                        <a href="{{ SITEURL }}/{{ FEED_ALL_RSS }}"><i class="fa fa-rss-square fa-lg padding-small"></i>
+                        <a href="{{ SITEURL }}/{{ FEED_ALL_RSS }}"><i class="fas fa-rss-square fa-lg padding-small"></i>
                             RSS feed
                         </a>
                     </li>
                     <li>
-                        <a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}"><i class="fa fa-rss-square fa-lg padding-small"></i>
+                        <a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}"><i class="fas fa-rss-square fa-lg padding-small"></i>
                             Atom feed
                         </a>
                     </li>
