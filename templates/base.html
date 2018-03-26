@@ -126,7 +126,7 @@
                 <li class="nav-divider"></li>
                 <li>
                     <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
-                        <i class="fab fa-users padding-small"></i>
+                        <i class="fas fa-users padding-small"></i>
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse {% block collapse_social_small %}{% endblock %}">
@@ -138,7 +138,19 @@
                 </ul></li>
                 {% endif %}
                 <li class="nav-divider"></li>
-                {{ nav_small_li('#', 'Back to top', '<span class="fab fa-arrow-up"></span>') }}
+                {{ nav_small_li('#', 'Back to top', '<span class="fas fa-arrow-up"></span>') }}
+            </ul>
+            <ul class="sidebar-nav sidebar-nav-small sidebar-feeds">
+                <li class="nav-divider"></li>
+                <li>
+                    <a class="collapsed" href="{{ SITEURL }}/{{ FEED_ALL_RSS }}"><i class="fas fa-rss-square fa-lg padding-small"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="collapsed" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}"><i class="fas fa-rss-square fa-lg padding-small"></i>
+                    </a>
+                </li>
+                <li class="nav-divider"></li>
             </ul>
         </div>
         <div id="sidebar-wrapper" class="twitchy-background">
@@ -311,17 +323,17 @@
                 {% endif %}
             </ul>
             <ul class="sidebar-nav sidebar-feeds">
-                    <li>
-                        <a href="{{ SITEURL }}/{{ FEED_ALL_RSS }}"><i class="fas fa-rss-square fa-lg padding-small"></i>
-                            RSS feed
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}"><i class="fas fa-rss-square fa-lg padding-small"></i>
-                            Atom feed
-                        </a>
-                    </li>
-                    <li class="nav-divider"></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a href="{{ SITEURL }}/{{ FEED_ALL_RSS }}"><i class="fas fa-rss-square fa-lg padding-small"></i>
+                        RSS feed
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}"><i class="fas fa-rss-square fa-lg padding-small"></i>
+                        Atom feed
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
