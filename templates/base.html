@@ -249,7 +249,7 @@
                     {% for cat, articles in categories %}
                     <li {% if cat == category %}class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ cat.url }}">
-                            <i class="fab fa-folder-open padding-small"></i>
+                            <i class="fas fa-folder-open padding-small"></i>
                             {{ cat }}
                             <span class="badge pull-right categorybadge">{{ articles|count }}</span>
                         </a>
